@@ -20,7 +20,7 @@
 #Chapter 4 codes
 
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect, HttpResponse, Http404
+from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from polls.models import Choice, Poll
 
