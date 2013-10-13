@@ -33,13 +33,11 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the last five published polls."""
         return Poll.objects.order_by('-pub_date')[:5]
+
+class DetailView(object):
+    model = Poll
+    template_name = 'polls/detail.html'
         
-def detail(request, poll_id):
-    try:
-        poll = Poll.objects.get(pk=poll_id)
-    except Poll.DoesNotExist:
-        raise Http404
-    return render(request, 'polls/detail.html', {'poll': poll})
 
 def results(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
