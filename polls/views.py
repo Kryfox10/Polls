@@ -34,15 +34,14 @@ class IndexView(generic.ListView):
         """Return the last five published polls."""
         return Poll.objects.order_by('-pub_date')[:5]
 
-class DetailView(object):
+class DetailView(generic.DetailView):
     model = Poll
     template_name = 'polls/detail.html'
         
-
-def results(request, poll_id):
-    poll = get_object_or_404(Poll, pk=poll_id)
-    return render(request, 'polls/results.html', {'poll': poll})
-
+class ResultsView(object):
+    model = Poll
+    template_name = 'polls/results.html'
+        
 def vote(request, poll_id):
     p = get_object_or_404(Poll, pk=poll_id)
     try:
