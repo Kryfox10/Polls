@@ -38,7 +38,7 @@ class DetailView(generic.DetailView):
     model = Poll
     template_name = 'polls/detail.html'
         
-class ResultsView(object):
+class ResultsView(generic.DetailView):
     model = Poll
     template_name = 'polls/results.html'
         
